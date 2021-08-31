@@ -161,7 +161,7 @@ app.post('/updateAppointmentTime', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
 
     client.connect(err => {
-        const collection = client.db('doctorPortal').collection('APpoinmentBooked');
+        const collection = client.db('doctorPortal').collection('AppoinmentBooked');
         collection.updateOne(
             { _id:ObjectId(ap.id) }, 
             {
