@@ -12,20 +12,12 @@ A Single page web app with dashboard  where people can pick the date and time an
 * Review appointments
 * Prescribe medicine for each patient
 
-
 ### Front-end Thechnology : 
 * React.js
-
 * Bootstrap4
-
 * CSS3
-
 ### Back-end Technology
 * Node.js
-
 * Express.js
-
 * MongoDB
-
-
 # doctor-clint-site
