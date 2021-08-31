@@ -11,8 +11,10 @@ app.use(BodyParser.json())
 const uri = process.env.DB_PATH;
 let client = new MongoClient(uri, {useNewUrlParser : true ,  useUnifiedTopology: true });
 
-/************************ 
-    Routes -- Get method 
+/************************
+ * 
+ *    Routes -- Get method 
+ * 
 *************************/
 
 // Root Route
@@ -120,8 +122,8 @@ app.post('/updatePrescription', (req, res) => {
     });
 })
 
+// Updating Appointment Visiting Status------
 
-// Updating Appointment Visiting Status
 app.post('/updateVisitingStatus', (req, res) => {
     const ap = req.body;
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
@@ -130,6 +132,7 @@ app.post('/updateVisitingStatus', (req, res) => {
         const collection = client.db('doctorsPortal').collection('bookedAppointments');
         collection.updateOne(
             { _id:ObjectId(ap.id) }, 
+            
             {
             $set: {  "visitingStatus" : ap.visitingStatus },
             $currentDate: { "lastModified": true }
