@@ -140,7 +140,7 @@ app.post('/updateVisitingStatus', (req, res) => {
           (err, result) => {
             if (err) {
                 console.log(err);
-                res.status(500).send({ message: err })
+                res.status(500).send({ message: err})
             }
             else {
                 res.send(result);
@@ -161,7 +161,7 @@ app.post('/updateAppointmentTime', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
 
     client.connect(err => {
-        const collection = client.db('doctorsPortal').collection('bookedAppointments');
+        const collection = client.db('doctorPortal').collection('APpoinmentBooked');
         collection.updateOne(
             { _id:ObjectId(ap.id) }, 
             {
@@ -177,31 +177,10 @@ app.post('/updateAppointmentTime', (req, res) => {
                 res.send(result);
                 console.log(result);
             }
-            client.close();
+            client.close()
         })
     });
 })
 
-
-// Dummy Route to insert Appointment Data at once
-/** 
-app.post('/insertAppointment' , (req,res) => {
-    const data = req.body;
-    console.log(data);
-    client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
-    client.connect(conErr => {
-        console.log(conErr);
-        const collection = client.db('doctorsPortal').collection('appointments');
-        collection.insertOne(data, (err , result) => {
-            err ? res.status(500).send({message : err}) : res.send(result.ops[0])
-            console.log(err);
-        })
-    client.close();
-
-    })
-})
-*/
-
-
 const port = process.env.PORT || 3200;
-app.listen(port, err => err ? console.log("Filed to Listen on Port" , port) : console.log("Listing for Port" , port));
+app.listen(port, err => err ? console.log("Filed To Connect with Port" , port) : console.log("Listing for Port" , port));
